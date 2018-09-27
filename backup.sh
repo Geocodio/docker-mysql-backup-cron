@@ -12,7 +12,8 @@ set -e
 DIR=$(mktemp -d)
 
 # Generate a timestamp to name the backup files with.
-TS=$(date +%s)
+TS=$(date +%Y-%m-%d-%H%M%S)
+YEAR=$(date +%Y)
 
 # Backup all databases, unless a list of databases has been specified
 if [ -z "$DBS" ]
@@ -23,7 +24,7 @@ else
 	# Backup each DB separately
 	for DB in $DBS
 	do
-		mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -hmysql -B $DB | gzip > $DIR/$DB-$TS.sql.gz
+		mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -hmysql -B $DB | gzip > $DIR/$YEAR/$DB-$TS.sql.gz
 	done
 fi
 

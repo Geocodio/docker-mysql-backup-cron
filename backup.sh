@@ -19,7 +19,7 @@ YEAR=$(date +%Y)
 if [ -z "$DBS" ]
 then
 	# Backup all DB's in bulk
-	mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -hmysql --all-databases | gzip > $DIR/all-databases-$TS.sql.gz
+	mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -hmysql --all-databases | gzip > $DIR/$YEAR/all-databases-$TS.sql.gz
 else
 	# Backup each DB separately
 	for DB in $DBS

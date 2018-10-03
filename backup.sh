@@ -19,17 +19,17 @@ YEAR=$(date +%Y)
 if [ -z "$DBS" ]
 then
 	# Backup all DB's in bulk
-	mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -hmysql --all-databases | gzip > $DIR/$YEAR/all-databases-$TS.sql.gz
+	mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -h$MYSQL_HOSTNAME --all-databases | gzip > $DIR/$YEAR/all-databases-$TS.sql.gz
 else
 	# Backup each DB separately
 	for DB in $DBS
 	do
-		mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -hmysql -B $DB | gzip > $DIR/$YEAR/$DB-$TS.sql.gz
+		mysqldump -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -h$MYSQL_HOSTNAME -B $DB | gzip > $DIR/$YEAR/$DB-$TS.sql.gz
 	done
 fi
 
 # Upload the backups to S3 --region=$REGION
-s3cmd --access_key=$ACCESS_KEY --secret_key=$SECRET_KEY --region=$REGION sync $DIR/ $BUCKET
+s3cmd --access_key=$ACCESS_KEY --secret_key=$SECRET_KEY --region=$REGION sync $DIR/ s3://$BUCKET
 
 # Clean up
 rm -rf $DIR

@@ -8,6 +8,7 @@ backup:
     ACCESS_KEY: KEY
     SECRET_KEY: SECRET
     REGION: eu-central-1
+    MYSQL_HOSTNAME: mysql
     DBS: DB_NAME
     CRON_D_BACKUP: |
       # Run at strange (UTC) hours, (14,22,06 NZDT, 13,21,05 NZST)
@@ -18,4 +19,3 @@ db:
   environment:
     MYSQL_ROOT_PASSWORD: asecretpassword
     MYSQL_DATABASE: db1
-    MYSQL_HOSTNAME: mysql

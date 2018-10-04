@@ -2,13 +2,14 @@
 
 default: build
 
-tag = geocodio/docker-mysql-backup-cron
+org = geocodio
+name = docker-mysql-backup-cron
 
 build:
-	docker build -t $(tag) .
+	docker build -t $(org)/$(name) .
 
 deploy:
-	docker push $(tag)	
+	docker push $(org)/$(name)
 
 run:
-	docker run --rm --name=replication-monitor --env-file=.env $(tag)
+	docker run --rm --name=$(name) --env-file=.env $(tag)

@@ -29,7 +29,23 @@ CRON_D_BACKUP="0 1 * * * root /backup.sh | logger"
 
 > See also `.env.example`
 
-## Releasing
+## Example
+
+```
+docker run --rm --name=backup \
+    -e ACCESS_KEY=X \
+    -e SECRET_KEY=X \
+    -e BUCKET=x \
+    -e MYSQL_USERNAME=root \
+    -e MYSQL_PASSWORD=x \
+    -e MYSQL_HOSTNAME=mysql \
+    -e DBS=app \
+    geocodio/docker-mysql-backup-cron
+```
+
+> You can manually test that the settings are working without waiting for the cronjob to trigger, by running `docker exec -t backup /backup.sh`. You should see no error messages or warnings.
+
+## Developing
 
 ```
 # Build docker image

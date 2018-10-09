@@ -21,12 +21,12 @@ mkdir -p $DIR/$YEAR
 if [ -z "$DBS" ]
 then
 	# Backup all DB's in bulk
-	mysqldump -u"$MYSQL_USERNAME" -p"$MYSQL_PASSWORD" -h$MYSQL_HOSTNAME --all-databases | gzip > $DIR/$YEAR/all-databases-$TS.sql.gz
+	mysqldump -u"$MYSQL_USERNAME" -p"$MYSQL_PASSWORD" -h$MYSQL_HOSTNAME --single-transaction --quick --all-databases | gzip > $DIR/$YEAR/all-databases-$TS.sql.gz
 else
 	# Backup each DB separately
 	for DB in $DBS
 	do
-		mysqldump -u"$MYSQL_USERNAME" -p"$MYSQL_PASSWORD" -h$MYSQL_HOSTNAME -B $DB | gzip > $DIR/$YEAR/$DB-$TS.sql.gz
+		mysqldump -u"$MYSQL_USERNAME" -p"$MYSQL_PASSWORD" -h$MYSQL_HOSTNAME --single-transaction --quick -B $DB | gzip > $DIR/$YEAR/$DB-$TS.sql.gz
 	done
 fi
 

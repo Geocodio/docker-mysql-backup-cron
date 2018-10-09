@@ -20,7 +20,7 @@ else
 	s3cmd --access_key=$ACCESS_KEY --secret_key=$SECRET_KEY --region=$REGION get $BUCKET$1 $DIR/$1
 
 	# Restore the DB
-	gunzip < $DIR/$1 | mysql -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -h$MYSQL_HOSTNAME
+	gunzip < $DIR/$1 | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD -h$MYSQL_HOSTNAME
 
 	# Clean up
 	rm -rf $DIR

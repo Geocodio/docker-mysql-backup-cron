@@ -2,7 +2,7 @@
 
 This will take periodic MySQL or MariaDB backups, gzip them and upload the files to Amazon S3.
 
-This is based off of the excellent [docker-mysql-backup-cron](https://github.com/nickbreen/docker-mysql-backup-cron) image by [nickbreen](https://github.com/nickbreen)
+This is based off of the excellent [docker-mysql-backup-cron](https://github.com/nickbreen/docker-mysql-backup-cron) image by [nickbreen](https://github.com/nickbreen), but adds additional customization options, more readable timestamps - and it's a bit easier to use, with more examples.
 
 ## Configuration
 

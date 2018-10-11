@@ -13,6 +13,7 @@ backup:
     CRON_D_BACKUP: |
       # Run at strange (UTC) hours, (14,22,06 NZDT, 13,21,05 NZST)
       * *    * * *   root /backup.sh | logger
+      
 
 db:
   image: mysql:5.5

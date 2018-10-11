@@ -21,11 +21,13 @@ REGION=us-east-1
 
 ```
 # Every 8 hours
-CRON_D_BACKUP="0 1,9,17 * * * root /backup.sh | logger"
+CRON_D_BACKUP="0 1,9,17 * * * root /backup.sh | logger\n"
 
 # Every night at 1am
-CRON_D_BACKUP="0 1 * * * root /backup.sh | logger"
+CRON_D_BACKUP="0 1 * * * root /backup.sh | logger\n"
 ```
+
+**Note**: The "\n" at the end of the line is required by `cron` to be able to recognize the job
 
 > See also `.env.example`
 

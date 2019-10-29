@@ -19,6 +19,11 @@ DBS=DATABASE_NAME_OR_LEAVE_EMPTY_FOR_ALL_DBS
 REGION=us-east-1
 ```
 
+You can also specify multiple databases by separating them with a space:
+```
+DBS="database1 database2"
+```
+
 ```
 # Every 8 hours
 CRON_D_BACKUP="0 1,9,17 * * * root /backup.sh | logger\n"
